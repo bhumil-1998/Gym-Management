@@ -1,21 +1,28 @@
 package com.GymManagement.gym.Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "scheme_details")
 public class Scheme implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "scheme_id")
+//	3
 	private Long id; 
 	
 	@Column(name = "scheme_name")
@@ -29,6 +36,10 @@ public class Scheme implements Serializable {
 	
 	@Column(name = "is_deleted")
 	private boolean isDeleted;
+	
+	@OneToMany(fetch = FetchType.LAZY , mappedBy = "id" , cascade = CascadeType.ALL , orphanRemoval = true)
+	@JsonIgnoreProperties("scheme")
+	private List<Plan> plans = new ArrayList<Plan>();
 
 	public Scheme() {
 		super();

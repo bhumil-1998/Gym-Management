@@ -1,5 +1,6 @@
 package com.GymManagement.gym.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,7 @@ public class UserService {
 			newUser = userRepository.save(new User(null,userModel.getUserName()
 					,userModel.getFullName(),userModel.getEmailid()
 					,userModel.getContactno(),userModel.getPassword()
-					,userModel.getCreatedBy(),userModel.getCreatedDate()
+					,userModel.getCreatedBy(),new Date()
 					,false, userModel.getUserType()));
 			if(newUser == null) {
 				throw new Exception("User Cannot Created");

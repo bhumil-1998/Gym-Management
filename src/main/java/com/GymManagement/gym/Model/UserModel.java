@@ -42,6 +42,7 @@ public class UserModel {
 		this.createdDate = createdDate;
 		this.isDeleted = isDeleted;
 		this.userType = userType;
+		
 	}
 
 	public String getUserName() {
@@ -116,5 +117,11 @@ public class UserModel {
 		this.userType = userType;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "UserModel [userName=" + userName + ", fullName=" + fullName + ", emailid=" + emailid + ", contactno="
+				+ contactno + ", password=" + password + ", createdBy=" + createdBy + ", createdDate=" + createdDate
+				+ ", isDeleted=" + isDeleted + ", userType=" + userType + "]";
+	}
+
 }
